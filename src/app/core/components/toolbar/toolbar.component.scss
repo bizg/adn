@@ -1,0 +1,21 @@
+.menu-spacer {
+  flex: 1 1 auto;
+}
+
+.menu-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.menu-button-row {
+  display: table-cell;
+}
+.menu-button-row a {
+  text-decoration: none;
+}
+
+.menu-button-row .mat-button-base {
+  margin: 8px 8px 8px 0;
+}

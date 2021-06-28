@@ -1,0 +1,50 @@
+<h1>Edit schedule</h1>
+<h3>In this form you can edit a schedule</h3>
+<form [formGroup]="scheduleForm">
+	<div fxLayout="row">
+		<div class="items" fxFlex="50">
+			<mat-form-field appearance="outline">
+				<mat-label>Subject</mat-label>
+				<input matInput placeholder="Placeholder" formControlName="subject">
+			  </mat-form-field>
+		</div>
+		<div class="items" fxFlex="50">
+			<mat-form-field appearance="outline">
+				<mat-label>Name</mat-label>
+				<input matInput placeholder="Placeholder" formControlName="name">
+			  </mat-form-field>
+		</div>
+	</div>
+	<div fxLayout="row">
+		<div class="items" fxFlex="50">
+			<mat-form-field appearance="outline">
+				<mat-label>Date</mat-label>
+				<input matInput [matDatepicker]="picker" 
+						placeholder="Placeholder" 
+						formControlName="date">
+				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+			  </mat-form-field>
+		</div>
+		<div class="items" fxFlex="50">
+			<mat-form-field appearance="outline">
+				<mat-label>Start hour</mat-label>
+				<input matInput type="time" placeholder="Placeholder" formControlName="start_hour">
+			  </mat-form-field>
+		</div>
+	</div>
+	<div fxLayout="row">
+		<div class="items" fxFlex="50">
+			<mat-form-field appearance="outline">
+				<mat-label>End hour</mat-label>
+				<input matInput type="time" placeholder="Placeholder" formControlName="end_hour">
+			  </mat-form-field>
+		</div>
+	</div>
+	<div fxLayout="row">
+		<div fxFlex="100" fxLayoutAlign="center center">
+			<button mat-flat-button color="primary" class="margin" (click)="save()" id="editButtonSave">Save</button>
+			<button mat-flat-button color="warn" class="margin" (click)="closeModal()">Close</button>
+		</div>
+	</div>
+</form>
