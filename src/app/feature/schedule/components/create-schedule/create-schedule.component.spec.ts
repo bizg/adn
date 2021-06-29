@@ -56,6 +56,5 @@ describe('CreateScheduleComponent', () => {
     component.save();
 
     // Aca validamos el resultado esperado al enviar la petición
-    // TODO adicionar expect
   });
 });

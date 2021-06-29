@@ -4,8 +4,8 @@ export class Schedule {
     subject: string;
     name: string;
     date: string;
-    start_hour: string;
-    end_hour: string;
+    startHour: string;
+    endHour: string;
     value: string;
 
     constructor(
@@ -13,16 +13,16 @@ export class Schedule {
         subject: string,
         name: string,
         date: string,
-        start_hour: string,
-        end_hour: string,
+        startHour: string,
+        endHour: string,
         value: string
     ) {
         this.id = id;
         this.subject = subject;
         this.name = name;
         this.date = date;
-        this.start_hour = start_hour;
-        this.end_hour = end_hour;
+        this.startHour = startHour;
+        this.endHour = endHour;
         this.value = value;
     }
 }

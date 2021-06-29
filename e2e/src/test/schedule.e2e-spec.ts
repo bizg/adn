@@ -1,7 +1,7 @@
-import { NavbarPage } from "../page/navbar/navbar.po";
-import { SchedulePage } from "../page/schedule/schedule.po";
-import { AppPage } from "../app.po";
-import { browser } from "protractor";
+import { NavbarPage } from '../page/navbar/navbar.po';
+import { SchedulePage } from '../page/schedule/schedule.po';
+import { AppPage } from '../app.po';
+import { browser } from 'protractor';
 
 describe('workspace-project Schedule', () => {
     let page: AppPage;
@@ -13,7 +13,7 @@ describe('workspace-project Schedule', () => {
         navbar = new NavbarPage();
         schedule = new SchedulePage();
     });
-    
+
     it('Should it create a schedule', () => {
         const SCHEDULE_SUBJECT = 'Pruebas unitarias';
         const SCHEDULE_NAME = 'Pruebas unitarias name';
@@ -30,12 +30,11 @@ describe('workspace-project Schedule', () => {
         schedule.insertDateSchedule(SCHEDULE_DATE);
         schedule.insertStartHourSchedule(SCHEDULE_START_HOUR);
         schedule.insertEndHourSchedule(SCHEDULE_END_HOUR);
-        // browser.sleep(10000);
         schedule.clickButtonSaveSchedule();
 
         expect(SCHEDULE_COUNT).toBe(schedule.countSchedule());
     });
-    
+
     it('Should it update a schedule', () => {
         const SCHEDULE_SUBJECT = 'Pruebas unitarias ACTUALIZACION';
         const SCHEDULE_NAME = 'Pruebas unitarias name';
@@ -70,8 +69,4 @@ describe('workspace-project Schedule', () => {
 
         expect(SCHEDULE_COUNT).toBe(schedule.countSchedule());
     });
-    
-    
-
-
 });

@@ -56,6 +56,5 @@ describe('CrearProductoComponent', () => {
     component.cerar();
 
     // Aca validamos el resultado esperado al enviar la petición
-    // TODO adicionar expect
   });
 });

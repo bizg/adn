@@ -8,54 +8,53 @@ const LONGITUD_MINIMA_PERMITIDA_TEXTO = 3;
 const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 20;
 
 @Component({
-	selector: 'app-crear-producto',
-	templateUrl: './create-schedule.component.html',
-	styleUrls: ['./create-schedule.component.scss']
+    selector: 'app-crear-producto',
+    templateUrl: './create-schedule.component.html',
+    styleUrls: ['./create-schedule.component.scss']
 })
 export class CreateScheduleComponent implements OnInit {
-	scheduleForm: FormGroup;
-	constructor(
-		protected scheduleService: ScheduleService,
-		private matDialog: MatDialogRef<CreateScheduleComponent>
-	) { }
+    scheduleForm: FormGroup;
+    constructor(
+        protected scheduleService: ScheduleService,
+        private matDialog: MatDialogRef<CreateScheduleComponent>
+    ) { }
 
-	ngOnInit() {
-		this.buildFormSchedule();
-	}
+    ngOnInit() {
+        this.buildFormSchedule();
+    }
 
-	save() {
-		let form = this.scheduleForm.value;
-			form.id = this.getId();
-			form.date = form.date;
-			form.value = environment.valueSchedule;
-		this.scheduleService.create(form).subscribe(() => {
-			this.closeModal();
-		});
-	}
+    save() {
+        const form = this.scheduleForm.value;
+        form.id = this.getId();
+        form.value = environment.valueSchedule;
+        this.scheduleService.create(form).subscribe(() => {
+            this.closeModal();
+        });
+    }
 
-	private buildFormSchedule() {
-		this.scheduleForm = new FormGroup({
-			subject: new FormControl('', [Validators.required,
-											Validators.minLength(LONGITUD_MINIMA_PERMITIDA_TEXTO),
-											Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TEXTO)]),
-			name: new FormControl('', [Validators.required,
-										Validators.minLength(LONGITUD_MINIMA_PERMITIDA_TEXTO),
-										Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TEXTO)]),
-			date: new FormControl('', [Validators.required]),
-			start_hour: new FormControl('', [Validators.required]),
-			end_hour: new FormControl('', [Validators.required]),
-		});
-	}
+    private buildFormSchedule() {
+        this.scheduleForm = new FormGroup({
+            subject: new FormControl('', [Validators.required,
+                                            Validators.minLength(LONGITUD_MINIMA_PERMITIDA_TEXTO),
+                                            Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TEXTO)]),
+            name: new FormControl('', [Validators.required,
+                                        Validators.minLength(LONGITUD_MINIMA_PERMITIDA_TEXTO),
+                                        Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TEXTO)]),
+            date: new FormControl('', [Validators.required]),
+            startHour: new FormControl('', [Validators.required]),
+            endHour: new FormControl('', [Validators.required]),
+        });
+    }
 
-	private getId() {
-		let date = new Date();
-		let days = `${date.getFullYear()}${date.getMonth()}${date.getDay()}`;
-		let time = `${date.getHours()}${date.getMinutes()}${date.getSeconds()}`;
-		return `${days}${time}`;
-	}
+    private getId() {
+        const date = new Date();
+        const days = `${date.getFullYear()}${date.getMonth()}${date.getDay()}`;
+        const time = `${date.getHours()}${date.getMinutes()}${date.getSeconds()}`;
+        return `${days}${time}`;
+    }
 
-	public closeModal(){
-		this.matDialog.close();
-	}
+    public closeModal(){
+        this.matDialog.close();
+    }
 
 }

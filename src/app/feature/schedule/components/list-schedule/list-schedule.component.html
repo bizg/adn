@@ -13,7 +13,7 @@
 <div class="">
 
 	<table mat-table [dataSource]="listSchedule" class="mat-elevation-z8" matSort id="listTableSchedule">
-
+		<caption>List schedule</caption>
 		<!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
 
@@ -42,15 +42,15 @@
 		</ng-container>
 
 		<!-- Symbol Column -->
-		<ng-container matColumnDef="start_hour">
+		<ng-container matColumnDef="startHour">
 			<mat-header-cell *matHeaderCellDef mat-sort-header> Start hour </mat-header-cell>
-			<mat-cell *matCellDef="let element" data-label="start_hour"> {{element.start_hour}} </mat-cell>
+			<mat-cell *matCellDef="let element" data-label="startHour"> {{element.startHour}} </mat-cell>
 		</ng-container>
 
 		<!-- Symbol Column -->
-		<ng-container matColumnDef="end_hour">
+		<ng-container matColumnDef="endHour">
 			<mat-header-cell *matHeaderCellDef mat-sort-header> End hour </mat-header-cell>
-			<mat-cell *matCellDef="let element" data-label="end_hour"> {{element.end_hour}} </mat-cell>
+			<mat-cell *matCellDef="let element" data-label="endHour"> {{element.endHour}} </mat-cell>
 		</ng-container>
 
 		<!-- Symbol Column -->

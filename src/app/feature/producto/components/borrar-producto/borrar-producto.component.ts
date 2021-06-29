@@ -8,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class BorrarProductoComponent implements OnInit {
 
 
-  constructor() { }
+  constructor() {
+    // This is intentional
+  }
 
   ngOnInit() {
+    // This is intentional
   }
 
 }

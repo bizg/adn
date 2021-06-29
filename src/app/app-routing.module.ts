@@ -9,7 +9,6 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [SecurityGuard]  },
   { path: 'producto', loadChildren: () => import('@producto/producto.module').then(mod => mod.ProductoModule) },
   { path: 'schedule', loadChildren: () => import('./feature/schedule/schedule.module').then(mod => mod.ScheduleModule) }
-  
 ];
 
 @NgModule({

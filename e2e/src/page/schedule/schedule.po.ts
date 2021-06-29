@@ -12,13 +12,12 @@ export class SchedulePage {
     private buttonEditSaveSchedule = element(by.id('editButtonSave'));
 
     private buttonEditSchedule(index: number){
-        return element(by.id(`edit-${index}`))
-    };
+        return element(by.id(`edit-${index}`));
+    }
+
     private buttonDeleteSchedule(index: number){
-        return element(by.id(`delete-${index}`))
-    };
-    // private linkDeleteSchedule = element(by.id('linkListarProducto'));
-    // private inputDescripcionProducto = element(by.id('descripcionProducto'));
+        return element(by.id(`delete-${index}`));
+    }
 
     async clickButtonCreateSchedule() {
         await this.linkCreateSchedule.click();
@@ -65,10 +64,4 @@ export class SchedulePage {
         const button = this.buttonDeleteSchedule(index);
         await button.click();
     }
-
-    
-
-    // async contarProductos() {
-    //     return this.listaProductos.count();
-    // }
 }

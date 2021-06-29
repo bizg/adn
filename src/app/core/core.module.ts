@@ -15,32 +15,32 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-import { FlexLayoutModule } from "@angular/flex-layout";
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatListModule } from '@angular/material/list';
 import { TrmService } from './services/trm.service';
 
 @NgModule({
-	declarations: [ToolbarComponent, NavbarComponent],
-	imports: [
-		CommonModule,
-		RouterModule,
-		FlexLayoutModule,
-		MatToolbarModule,
-		MatIconModule,
-		MatSidenavModule,
-		MatMenuModule,
-		MatButtonModule,
-		MatDividerModule,
-		MatListModule
-	],
-	exports: [ToolbarComponent, NavbarComponent],
-	providers: [
-		HttpService,
-		TrmService,
-		SecurityGuard,
-		{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-		{ provide: ErrorHandler, useClass: ManejadorError }
-	]
+    declarations: [ToolbarComponent, NavbarComponent],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FlexLayoutModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatSidenavModule,
+        MatMenuModule,
+        MatButtonModule,
+        MatDividerModule,
+        MatListModule
+    ],
+    exports: [ToolbarComponent, NavbarComponent],
+    providers: [
+        HttpService,
+        TrmService,
+        SecurityGuard,
+        { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+        { provide: ErrorHandler, useClass: ManejadorError }
+    ]
 })
 export class CoreModule { }
