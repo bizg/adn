@@ -52,7 +52,7 @@ pipeline {
         // cd adn
         // npm install -g @angular/cli -y
         // npm update -y
-        // npm run test
+        sh "npm run test"
       }
     }
 
