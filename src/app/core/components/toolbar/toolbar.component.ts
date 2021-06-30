@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuItem } from '@core/modelo/menu-item';
-// import { trm } from '@core/modelo/trm';
 import { TrmService } from '@core/services/trm.service';
 
 @Component({
