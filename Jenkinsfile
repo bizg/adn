@@ -48,8 +48,6 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Compile & Unit Tests<------------"
-        sh "git -c http.sslVerify=false clone https://bizg:mecas234@github.com/bizg/adn.git"
-        sh "cd adn"
         sh "npm install -g @angular/cli -y"
         sh "npm update -y"
         sh "npm run test"
