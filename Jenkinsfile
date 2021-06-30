@@ -48,8 +48,7 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Compile & Unit Tests<------------"
-        sh "npm install -g @angular/cli -y"
-        sh "npm update -y"
+        sh "npm install"
         sh "npm run test"
       }
     }
