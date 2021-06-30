@@ -13,3 +13,12 @@
 .cdk-overlay-pane {
     width: 100%;
 }
+
+.mat-select-panel {
+    min-width: 112px !important;
+    max-width: 262px !important;
+}
+
+.cdk-overlay-pane {
+    transform: none !important;
+}

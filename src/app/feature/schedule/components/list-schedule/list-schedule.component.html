@@ -56,7 +56,7 @@
 		<!-- Symbol Column -->
 		<ng-container matColumnDef="value">
 			<mat-header-cell *matHeaderCellDef mat-sort-header> Value </mat-header-cell>
-			<mat-cell *matCellDef="let element" data-label="value"> {{element.value}} </mat-cell>
+			<mat-cell *matCellDef="let element" data-label="value"> {{element.value | currency}} </mat-cell>
 		</ng-container>
 
 		<!-- Symbol Column -->

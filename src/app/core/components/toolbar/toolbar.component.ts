@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuItem } from '@core/modelo/menu-item';
+// import { trm } from '@core/modelo/trm';
+import { TrmService } from '@core/services/trm.service';
 
 @Component({
     selector: 'app-toolbar',
@@ -8,14 +10,16 @@ import { MenuItem } from '@core/modelo/menu-item';
 })
 export class ToolbarComponent implements OnInit {
 
+    public trm: string;
     @Input() items: MenuItem[];
 
-    constructor() {
-        // This is intentional
-    }
+    constructor(private trmService: TrmService ) { }
 
     ngOnInit() {
-        // This is intentional
+        this.trmService.obtnerTRM().then(data => {
+            this.trm = data.valor;
+            localStorage.setItem('trm', this.trm);
+        });
     }
 
 }

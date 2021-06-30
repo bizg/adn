@@ -15,6 +15,7 @@ import { ListScheduleComponent } from './components/list-schedule/list-schedule.
 import { ScheduleRoutingModule } from './schedule-routing.module';
 import { ScheduleService } from './shared/service/schedule.service';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     FlexLayoutModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule,
   ],
   providers: [ScheduleService]
 })

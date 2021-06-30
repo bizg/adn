@@ -1,6 +1,9 @@
 <mat-toolbar color="primary">
 	<span>Schedule app</span>
 	<span class="menu-spacer"></span>
+    <div class="trm">
+            TRM: ${{ trm }}
+    </div>
     <div class="menu-button-row">
         <button mat-flat-button color="Raised" *ngFor="let item of items" fxHide.xs layout-margin>
             <a href="{{item.url}}" id="{{ item.id }}">{{item.name}}</a>

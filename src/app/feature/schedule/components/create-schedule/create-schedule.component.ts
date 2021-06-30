@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ScheduleService } from '../../shared/service/schedule.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { environment } from 'src/environments/environment';
 import { MatDialogRef } from '@angular/material/dialog';
+import { AlertService } from '@shared/service/alert.service';
 
 const LONGITUD_MINIMA_PERMITIDA_TEXTO = 3;
 const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 20;
@@ -13,21 +13,30 @@ const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 20;
     styleUrls: ['./create-schedule.component.scss']
 })
 export class CreateScheduleComponent implements OnInit {
+    horario: string[] = [];
     scheduleForm: FormGroup;
     constructor(
         protected scheduleService: ScheduleService,
-        private matDialog: MatDialogRef<CreateScheduleComponent>
+        private matDialog: MatDialogRef<CreateScheduleComponent>,
+        private alertService: AlertService
     ) { }
 
     ngOnInit() {
+        this.obtenerRangoDeDisponibilidad();
         this.buildFormSchedule();
     }
 
     save() {
         const form = this.scheduleForm.value;
+        if (!this.scheduleForm.valid) { return; }
         form.id = this.getId();
-        form.value = environment.valueSchedule;
+        form.value = this.scheduleService.calcularPrecioCita(form);
+        if (this.scheduleService.validarDisponibilidadAgenda(form).length > 0) {
+            this.alertService.AlertaError('Ya hay citas agendas en la hora seleccionada');
+            return;
+        }
         this.scheduleService.create(form).subscribe(() => {
+            this.alertService.AlertaExito('Se ha realizado la creación del agendamiento exitosamente');
             this.closeModal();
         });
     }
@@ -35,15 +44,19 @@ export class CreateScheduleComponent implements OnInit {
     private buildFormSchedule() {
         this.scheduleForm = new FormGroup({
             subject: new FormControl('', [Validators.required,
-                                            Validators.minLength(LONGITUD_MINIMA_PERMITIDA_TEXTO),
-                                            Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TEXTO)]),
+            Validators.minLength(LONGITUD_MINIMA_PERMITIDA_TEXTO),
+            Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TEXTO)]),
             name: new FormControl('', [Validators.required,
-                                        Validators.minLength(LONGITUD_MINIMA_PERMITIDA_TEXTO),
-                                        Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TEXTO)]),
+            Validators.minLength(LONGITUD_MINIMA_PERMITIDA_TEXTO),
+            Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TEXTO)]),
             date: new FormControl('', [Validators.required]),
             startHour: new FormControl('', [Validators.required]),
             endHour: new FormControl('', [Validators.required]),
         });
+    }
+
+    private obtenerRangoDeDisponibilidad() {
+        this.horario = this.scheduleService.obtenerRangoDeDisponibilidad();
     }
 
     private getId() {
@@ -53,7 +66,7 @@ export class CreateScheduleComponent implements OnInit {
         return `${days}${time}`;
     }
 
-    public closeModal(){
+    public closeModal() {
         this.matDialog.close();
     }
 

@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-
 import { ScheduleService } from '../../shared/service/schedule.service';
 import { Schedule } from '../../shared/model/schedule';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,7 +11,7 @@ import { EditScheduleComponent } from '../edit-schedule/edit-schedule.component'
     styleUrls: ['./list-schedule.component.scss']
 })
 export class ListScheduleComponent implements OnInit {
-    public listSchedule: Observable<Schedule[]>;
+    public listSchedule: Schedule[];
     public dataSource: Schedule[];
     public displayedColumns: string[] = ['id',
         'subject',
@@ -35,7 +33,11 @@ export class ListScheduleComponent implements OnInit {
     }
 
     doGet() {
-        this.listSchedule = this.scheduleService.get();
+        this.scheduleService.get().subscribe(data => {
+            this.listSchedule = data;
+            localStorage.removeItem('listSchedule');
+            localStorage.setItem('listSchedule', JSON.stringify(data));
+        });
     }
 
     doDelete(schedule: Schedule) {
