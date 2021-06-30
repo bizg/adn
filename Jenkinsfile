@@ -48,10 +48,10 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Compile & Unit Tests<------------"
-        // git -c http.sslVerify=false clone https://USERNAME:PASSWORD@GITHUB.URL/APP_NAME.git
-        // cd APP_NAME
-        // npm install -g @angular/cli -y
-        // npm update -y
+        git -c http.sslVerify=false clone https://bizg:mecas234@github.com/bizg/adn.git
+        cd adn
+        npm install -g @angular/cli -y
+        npm update -y
         npm run test
       }
     }
