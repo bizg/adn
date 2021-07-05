@@ -29,7 +29,7 @@ describe('ScheduleService', () => {
     it('deberia listar productos', () => {
         const dummySchedule = [
             new Schedule(
-                2021542128342,
+                '2021542128342',
                 'cita de prueba 23421',
                 'nombre prueba 2',
                 '2021-06-24T05:00:00.000Z',
@@ -38,7 +38,7 @@ describe('ScheduleService', () => {
                 '40'
             ),
             new Schedule(
-                20215421283455,
+                '20215421283455',
                 'cita de prueba 32423',
                 'nombre prueba 243223',
                 '2021-06-24T05:00:00.000Z',
@@ -58,7 +58,7 @@ describe('ScheduleService', () => {
 
     it('deberia crear un producto', () => {
         const dummySchedule = new Schedule(
-            2021542128342,
+            '2021542128342',
             'cita de prueba 23421',
             'nombre prueba 2',
             '2021-06-24T05:00:00.000Z',
@@ -76,7 +76,7 @@ describe('ScheduleService', () => {
 
     it('deberia eliminar un producto', () => {
         const dummySchedule = new Schedule(
-            2021542128342,
+            '2021542128342',
             'cita de prueba 23421',
             'nombre prueba 2',
             '2021-06-24T05:00:00.000Z',

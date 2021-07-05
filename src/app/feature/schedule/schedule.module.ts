@@ -16,6 +16,8 @@ import { ScheduleRoutingModule } from './schedule-routing.module';
 import { ScheduleService } from './shared/service/schedule.service';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { DatePipe } from '@angular/common';
+import { ScheduleMockService } from './shared/data/schedule-mock.service';
 
 
 @NgModule({
@@ -39,6 +41,6 @@ import { MatSelectModule } from '@angular/material/select';
     MatNativeDateModule,
     MatSelectModule,
   ],
-  providers: [ScheduleService]
+  providers: [ScheduleService, DatePipe, ScheduleMockService]
 })
 export class ScheduleModule { }

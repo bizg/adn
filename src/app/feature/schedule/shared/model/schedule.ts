@@ -1,6 +1,6 @@
 export class Schedule {
 
-    id: number;
+    id: string;
     subject: string;
     name: string;
     date: string;
@@ -9,7 +9,7 @@ export class Schedule {
     value: string;
 
     constructor(
-        id: number,
+        id: string,
         subject: string,
         name: string,
         date: string,

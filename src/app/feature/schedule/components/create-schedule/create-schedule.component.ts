@@ -5,7 +5,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { AlertService } from '@shared/service/alert.service';
 
 const LONGITUD_MINIMA_PERMITIDA_TEXTO = 3;
-const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 20;
+const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 50;
 
 @Component({
     selector: 'app-crear-producto',
@@ -38,6 +38,7 @@ export class CreateScheduleComponent implements OnInit {
         this.scheduleService.create(form).subscribe(() => {
             this.alertService.AlertaExito('Se ha realizado la creación del agendamiento exitosamente');
             this.closeModal();
+            return true;
         });
     }
 
@@ -55,7 +56,7 @@ export class CreateScheduleComponent implements OnInit {
         });
     }
 
-    private obtenerRangoDeDisponibilidad() {
+    obtenerRangoDeDisponibilidad() {
         this.horario = this.scheduleService.obtenerRangoDeDisponibilidad();
     }
 
@@ -67,7 +68,7 @@ export class CreateScheduleComponent implements OnInit {
     }
 
     public closeModal() {
-        this.matDialog.close();
+        this.matDialog?.close();
     }
 
 }

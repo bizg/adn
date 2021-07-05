@@ -4,6 +4,7 @@ import { Schedule } from '../../shared/model/schedule';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateScheduleComponent } from '../create-schedule/create-schedule.component';
 import { EditScheduleComponent } from '../edit-schedule/edit-schedule.component';
+import { AlertService } from '@shared/service/alert.service';
 
 @Component({
     selector: 'app-list-schedule',
@@ -26,6 +27,7 @@ export class ListScheduleComponent implements OnInit {
     constructor(
         protected scheduleService: ScheduleService,
         public dialog: MatDialog,
+        private alertService: AlertService
     ) { }
 
     ngOnInit() {
@@ -33,8 +35,13 @@ export class ListScheduleComponent implements OnInit {
     }
 
     doGet() {
-        this.scheduleService.get().subscribe(data => {
-            this.listSchedule = data;
+        if(localStorage.getItem('listSchedule')) {
+            this.listSchedule = JSON.parse(localStorage.getItem('listSchedule'));
+            console.log(this.listSchedule);
+            return;
+        }
+        this.scheduleService.get().subscribe(async data => {
+            this.listSchedule = await data;
             localStorage.removeItem('listSchedule');
             localStorage.setItem('listSchedule', JSON.stringify(data));
         });
@@ -43,7 +50,10 @@ export class ListScheduleComponent implements OnInit {
     doDelete(schedule: Schedule) {
         this.scheduleService.delete(schedule).subscribe(() => {
             this.doGet();
+            this.alertService.AlertaExito('Se ha realizado la eliminación del agendamiento exitosamente');
+            return true;
         });
+        return true;
     }
 
     openDialogCreate(): void {
