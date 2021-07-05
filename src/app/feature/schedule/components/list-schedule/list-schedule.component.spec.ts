@@ -25,8 +25,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
+import { TrmService } from '@core/services/trm.service';
 
-fdescribe('ListScheduleComponent', () => {
+describe('ListScheduleComponent', () => {
     let component: ListScheduleComponent;
     let fixture: ComponentFixture<ListScheduleComponent>;
     let datePipe = new DatePipe('en-US');
@@ -65,7 +66,8 @@ fdescribe('ListScheduleComponent', () => {
                 HttpService,
                 AlertService,
                 DatePipe,
-                CurrencyPipe
+                CurrencyPipe,
+                TrmService
             ]
         })
             .compileComponents();
@@ -121,14 +123,14 @@ fdescribe('ListScheduleComponent', () => {
 
     it('Eliminar una cita del listado', () => {
         let btnDelete: HTMLElement;
-        const index = 0;
+        const index = 1;
         const { schedule } = new ScheduleMockService().getSchedule();
         fixture.detectChanges();
 
         btnDelete = SELECTORS.SCHEDULE.LIST.tableItemButtonDelete(index);
         btnDelete.click();
 
-        expect(component.doDelete(schedule[index])).toBe(true);
+        expect(component.doDelete(schedule[index])).toBeTrue();
     });
 
 });

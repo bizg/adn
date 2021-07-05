@@ -21,12 +21,7 @@ describe('ScheduleService', () => {
         service = TestBed.inject(ScheduleService);
     });
 
-    it('should be created', () => {
-        const productService: ScheduleService = TestBed.inject(ScheduleService);
-        expect(productService).toBeTruthy();
-    });
-
-    it('deberia listar productos', () => {
+    it('deberia listar agendamientos', () => {
         const dummySchedule = [
             new Schedule(
                 '2021542128342',

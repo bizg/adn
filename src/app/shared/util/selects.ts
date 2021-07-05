@@ -1,6 +1,5 @@
 export const SELECTORS = {
     NAVBAR: {
-        linkHome: (): HTMLLinkElement => document.querySelector('#home'),
         linkSchedule: (): HTMLLinkElement => document.querySelector('#schedule')
     },
     SCHEDULE:{

@@ -23,6 +23,7 @@ import { ScheduleMockService } from '@schedule/shared/data/schedule-mock.service
 import { ScheduleService } from '../../shared/service/schedule.service';
 import { HttpService } from '@core/services/http.service';
 import { of } from 'rxjs';
+import { TrmService } from '@core/services/trm.service';
 
 describe('EditScheduleComponent', () => {
 	let component: EditScheduleComponent;
@@ -72,7 +73,8 @@ describe('EditScheduleComponent', () => {
 				ScheduleService,
 				HttpService,
 				AlertService,
-				DatePipe
+				DatePipe,
+				TrmService
 			],
 		})
 			.compileComponents();

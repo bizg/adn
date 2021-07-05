@@ -1,10 +1,5 @@
 <div class="header" fxLayout="row">
-	<div class="inputs" fxFlex="50">
-		<mat-form-field>
-			<input matInput placeholder="Filter">
-		</mat-form-field>
-	</div>
-	<div class="buttons" fxFlex="50">
+	<div class="buttons" fxFlex="100">
 		<button mat-flat-button color="primary" (click)="openDialogCreate()" id="createSchedule">New</button>
 	</div>
 </div>
@@ -87,8 +82,4 @@
 		<mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
 	</table>
-
-	<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
-	</mat-paginator>
-
 </div>

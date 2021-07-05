@@ -24,7 +24,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MockLocationStrategy } from '@angular/common/testing';
 import { ScheduleMockService } from '@schedule/shared/data/schedule-mock.service';
-// import { ScheduleMockService } from '@schedule/shared/data/schedule-mock.service';
 
 describe('CreateScheduleComponent', () => {
 	let component: CreateScheduleComponent;

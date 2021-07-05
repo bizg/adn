@@ -17,10 +17,10 @@ describe('workspace-project Schedule', () => {
     it('Should it create a schedule', () => {
         const SCHEDULE_SUBJECT = 'Pruebas unitarias';
         const SCHEDULE_NAME = 'Pruebas unitarias name';
-        const SCHEDULE_DATE = '2021-06-01T05:00:00.000Z';
+        const SCHEDULE_DATE = '2021-08-05T05:00:00.000Z';
         const SCHEDULE_START_HOUR = '10:00';
         const SCHEDULE_END_HOUR = '12:00';
-        const SCHEDULE_COUNT = 2;
+        const SCHEDULE_COUNT = 4;
 
         page.navigateTo();
         navbar.clickButtonSchedule();
@@ -42,7 +42,7 @@ describe('workspace-project Schedule', () => {
         const SCHEDULE_NAME = 'Pruebas unitarias name';
         const SCHEDULE_START_HOUR = '12:00';
         const SCHEDULE_END_HOUR = '16:00';
-        const SCHEDULE_COUNT = 2;
+        const SCHEDULE_COUNT = 4;
         const SCHEDULE_POSITION_EDIT = 1;
 
         page.navigateTo();
@@ -60,7 +60,7 @@ describe('workspace-project Schedule', () => {
     });
 
     it('Should it delete a schedule', () => {
-        const SCHEDULE_COUNT = 1;
+        const SCHEDULE_COUNT = 3;
         const SCHEDULE_POSITION_DELETED = 1;
 
         page.navigateTo();

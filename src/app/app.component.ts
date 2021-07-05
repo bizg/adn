@@ -10,7 +10,6 @@ import { MenuItem } from '@core/modelo/menu-item';
 export class AppComponent {
     title = 'app-base';
     public companies: MenuItem[] = [
-        { url: '/home', name: 'home', icon: 'home', id: 'home' },
         { url: '/schedule', name: 'Schedule', icon: 'ballot', id: 'schedule' },
     ];
 }
