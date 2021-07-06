@@ -48,7 +48,9 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Compile & Unit Tests<------------"
+        sh "npm cache clean --force"
         sh "npm install"
+        sh "npm rebuild node-sass"
         sh "npm run test"
       }
     }
