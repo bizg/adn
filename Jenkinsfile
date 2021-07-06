@@ -44,15 +44,26 @@ pipeline {
         ])
       }
     }
+
+    stage('NPM Install') {
+      steps {
+          withEnv(['NPM_CONFIG_LOGLEVEL=warn']) {
+              sh 'npm install'
+          }
+      }
+    }
     
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Compile & Unit Tests<------------"
-        sh "npm cache clean --force"
-        sh "npm install"
-        sh "npm rebuild node-sass"
-        sh "npm run test"
+        sh 'ng test --browsers ChromeHeadless --progress=false --watch false --code-coverage'
       }
+    }
+
+    stage('Lint') {
+        steps {
+            sh 'ng lint'
+        }
     }
 
     stage('Static Code Analysis') {
@@ -67,6 +78,7 @@ sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallat
     stage('Build') {
       steps {
         echo "------------>Build<------------"
+        sh 'ng build --prod --progress=false'
       }
     }  
   }
