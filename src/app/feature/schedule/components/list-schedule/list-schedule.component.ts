@@ -35,8 +35,8 @@ export class ListScheduleComponent implements OnInit {
     }
 
     doGet() {
-        this.scheduleService.get().subscribe(async data => {
-            this.listSchedule = await data;
+        this.scheduleService.get().subscribe(data => {
+            this.listSchedule = data;
             localStorage.removeItem('listSchedule');
             localStorage.setItem('listSchedule', JSON.stringify(data));
         });

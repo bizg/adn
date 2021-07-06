@@ -4,8 +4,6 @@ import Swal from 'sweetalert2';
 @Injectable()
 export class AlertService {
 
-    constructor() { }
-
     public AlertaExito(texto: string, titulo?: string) {
         return Swal.fire({
             icon: 'success',

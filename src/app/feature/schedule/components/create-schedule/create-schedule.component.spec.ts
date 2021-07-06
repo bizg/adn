@@ -29,7 +29,6 @@ describe('CreateScheduleComponent', () => {
     let component: CreateScheduleComponent;
     let fixture: ComponentFixture<CreateScheduleComponent>;
     let scheduleService: ScheduleService;
-    // const { schedule } = new ScheduleMockService().getSchedule();
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({

@@ -32,14 +32,13 @@ export class ScheduleService {
     }
 
     public validarDisponibilidadAgenda(form) {
-        const data = JSON.parse(localStorage.getItem('listSchedule'))
+        return JSON.parse(localStorage.getItem('listSchedule'))
             .filter(e => {
                 const date = new Date(e.date);
                 const date2 = new Date(form.date);
                 return `${date.getFullYear()}${date.getMonth()}${date.getDay()}` === `${date2.getFullYear()}${date2.getMonth()}${date2.getDay()}`;
             })
             .filter(e => (e.startHour === form.startHour));
-        return data;
     }
 
     public calcularPrecioCita(form) {

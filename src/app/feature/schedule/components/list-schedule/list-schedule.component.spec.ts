@@ -1,12 +1,10 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-// import { of } from 'rxjs';
 
 import { ListScheduleComponent } from './list-schedule.component';
 import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ScheduleService } from '../../shared/service/schedule.service';
-// import { Schedule } from '../../shared/model/schedule';
 import { HttpService } from 'src/app/core/services/http.service';
 import { SELECTORS } from '@shared/util/selects';
 import { ScheduleMockService } from '@schedule/shared/data/schedule-mock.service';
@@ -128,13 +126,9 @@ describe('ListScheduleComponent', () => {
     }));
 
     it('Eliminar una cita del listado', () => {
-        // let btnDelete: HTMLElement;
         const index = 0;
         const { schedule } = new ScheduleMockService().getSchedule();
         fixture.detectChanges();
-
-        // btnDelete = SELECTORS.SCHEDULE.LIST.tableItemButtonDelete(index);
-        // btnDelete.click();
 
         expect(component.doDelete(schedule[index])).toBeTrue();
     });
