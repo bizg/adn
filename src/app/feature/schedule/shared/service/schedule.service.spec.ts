@@ -82,7 +82,7 @@ describe('ScheduleService', () => {
         service.delete(dummySchedule).subscribe((respuesta) => {
             expect(respuesta).toEqual(true);
         });
-        const req = httpMock.expectOne(`${apiEndpointSchedule}/1`);
+        const req = httpMock.expectOne(`${apiEndpointSchedule}/${dummySchedule.id}`);
         expect(req.request.method).toBe('DELETE');
         req.event(new HttpResponse<boolean>({ body: true }));
     });

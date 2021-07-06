@@ -6,7 +6,7 @@
     "start": "ng serve --proxy-config proxy.conf.json -o",
     "build": "ng build --prod",
     "build:prod": "ng build --target production --build-optimizer --vendor-chunk",
-    "test": "ng test --code-coverage",
+    "test": "ng test --code-coverage --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
