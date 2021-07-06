@@ -2,8 +2,8 @@ export const SELECTORS = {
     NAVBAR: {
         linkSchedule: (): HTMLLinkElement => document.querySelector('#schedule')
     },
-    SCHEDULE:{
-        LIST:{
+    SCHEDULE: {
+        LIST: {
             table: (): HTMLTableElement => document.querySelector('#listTableSchedule'),
             tableItemId: (index: number): HTMLElement => document.querySelector(`#item-id-${index}`),
             tableItemName: (index: number): HTMLElement => document.querySelector(`#item-name-${index}`),
@@ -35,4 +35,4 @@ export const SELECTORS = {
             buttonCloseModal: (): HTMLButtonElement => document.querySelector('#editButtonClose')
         }
     }
-}
+};

@@ -26,125 +26,123 @@ import { of } from 'rxjs';
 import { TrmService } from '@core/services/trm.service';
 
 describe('EditScheduleComponent', () => {
-	let component: EditScheduleComponent;
-	let fixture: ComponentFixture<EditScheduleComponent>;
-	let scheduleService: ScheduleService;
+    let component: EditScheduleComponent;
+    let fixture: ComponentFixture<EditScheduleComponent>;
+    let scheduleService: ScheduleService;
 
-	beforeEach(waitForAsync(() => {
-		TestBed.configureTestingModule({
-			declarations: [EditScheduleComponent],
-			imports: [
-				CommonModule,
-				HttpClientModule,
-				BrowserAnimationsModule,
-				RouterTestingModule,
-				ReactiveFormsModule,
-				FormsModule,
-				MatTableModule,
-				MatPaginatorModule,
-				MatFormFieldModule,
-				MatInputModule,
-				MatButtonModule,
-				MatIconModule,
-				FlexLayoutModule,
-				MatDialogModule,
-				MatDatepickerModule,
-				MatNativeDateModule,
-				MatSelectModule,
-			],
-			providers: [
-				{
-					provide: MatDialogRef,
-					useValue: []
-				},
-				{
-					provide: MAT_DIALOG_DATA,
-					useValue: {
-						date: "2021-06-01T10:00:00.000Z",
-						endHour: "12:00",
-						id: "202164104656",
-						name: "Pruebas unitarias name",
-						startHour: "10:00",
-						subject: "Pruebas unitarias",
-						value: 374850,
-					}
-				},
-				{ provide: LocationStrategy, useClass: MockLocationStrategy },
-				ScheduleService,
-				HttpService,
-				AlertService,
-				DatePipe,
-				TrmService
-			],
-		})
-			.compileComponents();
-	}));
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [EditScheduleComponent],
+            imports: [
+                CommonModule,
+                HttpClientModule,
+                BrowserAnimationsModule,
+                RouterTestingModule,
+                ReactiveFormsModule,
+                FormsModule,
+                MatTableModule,
+                MatPaginatorModule,
+                MatFormFieldModule,
+                MatInputModule,
+                MatButtonModule,
+                MatIconModule,
+                FlexLayoutModule,
+                MatDialogModule,
+                MatDatepickerModule,
+                MatNativeDateModule,
+                MatSelectModule,
+            ],
+            providers: [
+                {
+                    provide: MatDialogRef,
+                    useValue: []
+                },
+                {
+                    provide: MAT_DIALOG_DATA,
+                    useValue: {
+                        date: '2021-06-01T10:00:00.000Z',
+                        endHour: '12:00',
+                        id: '202164104656',
+                        name: 'Pruebas unitarias name',
+                        startHour: '10:00',
+                        subject: 'Pruebas unitarias',
+                        value: '374850',
+                    }
+                },
+                { provide: LocationStrategy, useClass: MockLocationStrategy },
+                ScheduleService,
+                HttpService,
+                AlertService,
+                DatePipe,
+                TrmService
+            ],
+        })
+            .compileComponents();
+    }));
 
-	beforeEach(() => {
-		fixture = TestBed.createComponent(EditScheduleComponent);
-		component = fixture.componentInstance;
-		scheduleService = TestBed.inject(ScheduleService);
+    beforeEach(() => {
+        fixture = TestBed.createComponent(EditScheduleComponent);
+        component = fixture.componentInstance;
+        scheduleService = TestBed.inject(ScheduleService);
 
-		const { schedule } = new ScheduleMockService().getSchedule();
-		localStorage.setItem('listSchedule', JSON.stringify(schedule));
+        const { schedule } = new ScheduleMockService().getSchedule();
+        localStorage.setItem('listSchedule', JSON.stringify(schedule));
 
-		spyOn(scheduleService, 'edit').and.returnValue(
-			of(true)
-		);
-		fixture.detectChanges();
-	});
+        spyOn(scheduleService, 'edit').and.returnValue(
+            of(true)
+        );
+        fixture.detectChanges();
+    });
 
-	it('Validar la existencia de los elementos', fakeAsync(() => {
-		const inputSubject = SELECTORS.SCHEDULE.UPDATE.inputSubject();
-		const inputName = SELECTORS.SCHEDULE.UPDATE.inputName();
-		const inputDate = SELECTORS.SCHEDULE.UPDATE.inputDate();
-		const inputStartHour = SELECTORS.SCHEDULE.UPDATE.inputStartHour();
-		const inputEndHour = SELECTORS.SCHEDULE.UPDATE.inputEndHour();
-		const btnSave = SELECTORS.SCHEDULE.UPDATE.buttonSave();
-		const btnClose = SELECTORS.SCHEDULE.UPDATE.buttonCloseModal();
+    it('Validar la existencia de los elementos', fakeAsync(() => {
+        const inputSubject = SELECTORS.SCHEDULE.UPDATE.inputSubject();
+        const inputName = SELECTORS.SCHEDULE.UPDATE.inputName();
+        const inputDate = SELECTORS.SCHEDULE.UPDATE.inputDate();
+        const inputStartHour = SELECTORS.SCHEDULE.UPDATE.inputStartHour();
+        const inputEndHour = SELECTORS.SCHEDULE.UPDATE.inputEndHour();
+        const btnSave = SELECTORS.SCHEDULE.UPDATE.buttonSave();
+        const btnClose = SELECTORS.SCHEDULE.UPDATE.buttonCloseModal();
 
+        tick(2000);
+        fixture.detectChanges();
 
-		tick(2000);
-		fixture.detectChanges();
+        expect(inputSubject?.tagName).toEqual('INPUT');
+        expect(inputName?.tagName).toEqual('INPUT');
+        expect(inputDate?.tagName).toEqual('INPUT');
+        expect(inputStartHour?.tagName).toEqual('MAT-SELECT');
+        expect(inputEndHour?.tagName).toEqual('MAT-SELECT');
+        expect(btnSave?.tagName).toEqual('BUTTON');
+        expect(btnClose?.tagName).toEqual('A');
 
+    }));
 
-		expect(inputSubject?.tagName).toEqual('INPUT');
-		expect(inputName?.tagName).toEqual('INPUT');
-		expect(inputDate?.tagName).toEqual('INPUT');
-		expect(inputStartHour?.tagName).toEqual('MAT-SELECT');
-		expect(inputEndHour?.tagName).toEqual('MAT-SELECT');
-		expect(btnSave?.tagName).toEqual('BUTTON');
-		expect(btnClose?.tagName).toEqual('A');
+    it('Formulario tiene que ser valido al ingresar', () => {
+        expect(component.scheduleForm.valid).toBe(true);
+    });
 
-	}));
+    it('Formulario es invalido cuando se guarda en fecha y hora que ya existen', () => {
+        expect(component.scheduleForm.valid).toBe(true);
 
-	it('Formulario tiene que ser valido al ingresar', () => {
-		expect(component.scheduleForm.valid).toBe(true);
-	});
+        component.scheduleForm.controls.subject.setValue('Pruebas unitaria subject');
+        component.scheduleForm.controls.name.setValue('Pruebas unitaria name');
+        component.scheduleForm.controls.date.setValue('2021-06-30T05:00:00.000Z');
+        component.scheduleForm.controls.startHour.setValue('7:00');
+        component.scheduleForm.controls.endHour.setValue('10:00');
 
-	it('Formulario es invalido cuando se guarda en fecha y hora que ya existen', () => {
-		expect(component.scheduleForm.valid).toBe(true);
+        expect(component.scheduleForm.valid).toBe(true);
+        expect(component.save()).toBe(false);
+    });
 
-		component.scheduleForm.controls.subject.setValue('Pruebas unitaria subject');
-		component.scheduleForm.controls.name.setValue('Pruebas unitaria name');
-		component.scheduleForm.controls.date.setValue('2021-06-30T05:00:00.000Z');
-		component.scheduleForm.controls.startHour.setValue('7:00');
-		component.scheduleForm.controls.endHour.setValue('10:00');
+    it('Actualizar un agendamiento', () => {
+        expect(component.scheduleForm.valid).toBe(true);
 
-		expect(component.scheduleForm.valid).toBe(true);
-		expect(component.save()).toBe(false);
-	})
+        component.scheduleForm.controls.subject.setValue('Pruebas unitaria subject');
+        component.scheduleForm.controls.name.setValue('Pruebas unitaria name');
+        component.scheduleForm.controls.date.setValue('2021-08-05T05:00:00.000Z');
+        component.scheduleForm.controls.startHour.setValue('7:00');
+        component.scheduleForm.controls.endHour.setValue('10:00');
 
-	it('Actualizar un agendamiento', () => {
-		expect(component.scheduleForm.valid).toBe(true);
-
-		component.scheduleForm.controls.subject.setValue('Pruebas unitaria subject');
-		component.scheduleForm.controls.name.setValue('Pruebas unitaria name');
-		component.scheduleForm.controls.date.setValue('2021-08-05T05:00:00.000Z');
-		component.scheduleForm.controls.startHour.setValue('7:00');
-		component.scheduleForm.controls.endHour.setValue('10:00');
-
-		component.save();
-		expect(component.scheduleForm.valid).toBe(true);
-	});
+        component.save();
+        expect(component.scheduleForm.valid).toBe(true);
+    });
 });

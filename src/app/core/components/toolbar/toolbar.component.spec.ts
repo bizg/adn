@@ -56,7 +56,7 @@ describe('ToolbarComponent', () => {
     it('Validar la existencia de los elementos', fakeAsync(() => {
         const linkSchedule = SELECTORS.NAVBAR.linkSchedule();
         tick(1000);
-		fixture.detectChanges();
+        fixture.detectChanges();
 
         expect(linkSchedule?.tagName).toEqual('A');
         expect(component).toBeTruthy();

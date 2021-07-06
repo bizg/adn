@@ -30,8 +30,8 @@ import { TrmService } from '@core/services/trm.service';
 describe('ListScheduleComponent', () => {
     let component: ListScheduleComponent;
     let fixture: ComponentFixture<ListScheduleComponent>;
-    let datePipe = new DatePipe('en-US');
-    let currentPipe = new CurrencyPipe('en-US');
+    const datePipe = new DatePipe('en-US');
+    const currentPipe = new CurrencyPipe('en-US');
     let scheduleService: ScheduleService;
 
     beforeEach(async () => {
@@ -45,16 +45,16 @@ describe('ListScheduleComponent', () => {
                 MatDialogModule,
                 HttpClientTestingModule,
                 MatTableModule,
-				MatPaginatorModule,
-				MatFormFieldModule,
-				MatInputModule,
-				MatButtonModule,
-				MatIconModule,
-				FlexLayoutModule,
-				MatDialogModule,
-				MatDatepickerModule,
-				MatNativeDateModule,
-				MatSelectModule,
+                MatPaginatorModule,
+                MatFormFieldModule,
+                MatInputModule,
+                MatButtonModule,
+                MatIconModule,
+                FlexLayoutModule,
+                MatDialogModule,
+                MatDatepickerModule,
+                MatNativeDateModule,
+                MatSelectModule,
                 MatIconModule
             ],
             providers: [{
@@ -80,8 +80,8 @@ describe('ListScheduleComponent', () => {
         scheduleService = TestBed.inject(ScheduleService);
         const { schedule } = new ScheduleMockService().getSchedule();
         spyOn(scheduleService, 'get').and.returnValue(
-			of(schedule)
-		);
+            of(schedule)
+        );
         fixture.detectChanges();
     });
 
@@ -90,7 +90,7 @@ describe('ListScheduleComponent', () => {
         fixture.detectChanges();
 
         expect(table?.tagName).toEqual('TABLE');
-    })
+    });
 
     it('Obtener el listado de agendamientos cuando se inicia el componente', fakeAsync(() => {
         let subject: HTMLElement;
@@ -104,7 +104,7 @@ describe('ListScheduleComponent', () => {
         const index = 0;
         const { schedule } = new ScheduleMockService().getSchedule();
         component.doGet();
-        tick(1000)
+        tick(1000);
 
         fixture.detectChanges();
         subject = SELECTORS.SCHEDULE.LIST.tableItemSubject(index);
@@ -115,7 +115,6 @@ describe('ListScheduleComponent', () => {
         value = SELECTORS.SCHEDULE.LIST.tableItemValue(index);
         btnEdit = SELECTORS.SCHEDULE.LIST.tableItemButtonEdit(index);
         btnDelete = SELECTORS.SCHEDULE.LIST.tableItemButtonDelete(index);
-        
 
         expect(subject?.textContent.trim()).toEqual(schedule[index].subject);
         expect(name?.textContent.trim()).toEqual(schedule[index].name);
