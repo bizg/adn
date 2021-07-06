@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  endpoint: '/agendamiento'
+  endpoint: '/agendamiento',
+  valueSchedule: 50,
 };
