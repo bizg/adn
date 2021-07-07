@@ -4,8 +4,12 @@ import { range } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Schedule } from '../model/schedule';
 
-const HORA_INICIO = 7;
-const HORA_FIN_RANGO = 11;
+const HORA_INICIO:number = 7;
+const HORA_FIN_RANGO:number = 11;
+const HORA_FIN_DESCUENTO_QUINCE_PORCIENTO:number = 10;
+const HORA_FIN_DESCUENTO_CINCO_PORCIENTO:number = 12;
+const VALOR_HORA_DESCUENTO_QUINCE:number = 0.15;
+const VALOR_HORA_DESCUENTO_CINCO:number = 0.05;
 
 @Injectable()
 export class ScheduleService {
@@ -45,8 +49,10 @@ export class ScheduleService {
         const horaInicio = form.startHour.split(':')[0];
         const tiempo = form.endHour.split(':')[0] - horaInicio;
         let valor = (environment.valueSchedule * tiempo) * parseFloat(localStorage.getItem('trm'));
-        if (horaInicio < 10) { valor = valor - (valor * 0.15); }
-        if (horaInicio > 10 && horaInicio < 12) { valor = valor - (valor * 0.05); }
+        if (horaInicio < HORA_FIN_DESCUENTO_QUINCE_PORCIENTO) { valor = valor - (valor * VALOR_HORA_DESCUENTO_QUINCE); }
+        if (horaInicio >= HORA_FIN_DESCUENTO_QUINCE_PORCIENTO && horaInicio <= HORA_FIN_DESCUENTO_CINCO_PORCIENTO) { 
+            valor = valor - (valor * VALOR_HORA_DESCUENTO_CINCO); 
+        }
 
         return Math.round(valor);
     }

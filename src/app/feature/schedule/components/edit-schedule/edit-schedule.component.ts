@@ -27,7 +27,6 @@ export class EditScheduleComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        console.log(this.data);
         this.obtenerRangoDeDisponibilidad();
         this.buildFormSchedule();
     }
