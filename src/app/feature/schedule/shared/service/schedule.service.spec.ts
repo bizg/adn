@@ -51,7 +51,7 @@ describe('ScheduleService', () => {
         req.flush(dummySchedule);
     });
 
-    it('deberia crear un producto', () => {
+    it('deberia crear un agendamiento', () => {
         const dummySchedule = new Schedule(
             '2021542128342',
             'cita de prueba 23421',
@@ -69,7 +69,7 @@ describe('ScheduleService', () => {
         req.event(new HttpResponse<boolean>({ body: true }));
     });
 
-    it('deberia eliminar un producto', () => {
+    it('deberia eliminar un agendamiento', () => {
         const dummySchedule = new Schedule(
             '2021542128342',
             'cita de prueba 23421',
