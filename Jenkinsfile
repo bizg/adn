@@ -49,7 +49,6 @@ pipeline {
       steps {
           withEnv(['NPM_CONFIG_LOGLEVEL=warn']) {
               sh 'npm install'
-              sh 'npm install sonar-scanner --save-dev'
           }
       }
     }
@@ -58,13 +57,6 @@ pipeline {
       steps{
         echo "------------>Compile & Unit Tests<------------"
         sh 'ng test --browsers ChromeHeadless --progress=false --watch false --code-coverage'
-      }
-    }
-    
-    stage('Coverage sonar') {
-      steps{
-        echo "------------>Compile & Unit Tests<------------"
-        sh 'npm run sonar'
       }
     }
 
