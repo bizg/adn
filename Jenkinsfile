@@ -59,6 +59,13 @@ pipeline {
         sh 'ng test --browsers ChromeHeadless --progress=false --watch false --code-coverage'
       }
     }
+    
+    stage('Coverage sonar') {
+      steps{
+        echo "------------>Compile & Unit Tests<------------"
+        sh 'npm run sonar'
+      }
+    }
 
     stage('Lint') {
         steps {
