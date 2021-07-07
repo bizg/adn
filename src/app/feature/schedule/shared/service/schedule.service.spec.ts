@@ -8,7 +8,7 @@ import { Schedule } from '../model/schedule';
 import { HttpResponse } from '@angular/common/http';
 import { TrmService } from '@core/services/trm.service';
 
-fdescribe('ScheduleService', () => {
+describe('ScheduleService', () => {
     let httpMock: HttpTestingController;
     let service: ScheduleService;
     let serviceTrm: TrmService;
