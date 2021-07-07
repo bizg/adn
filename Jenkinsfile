@@ -49,6 +49,7 @@ pipeline {
       steps {
           withEnv(['NPM_CONFIG_LOGLEVEL=warn']) {
               sh 'npm install'
+              sh 'npm install sonar-scanner --save-dev'
           }
       }
     }
