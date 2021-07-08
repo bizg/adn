@@ -9,13 +9,13 @@ import { HttpResponse } from '@angular/common/http';
 import { TrmService } from '@core/services/trm.service';
 import { ScheduleMockService } from '../data/schedule-mock.service';
 
-fdescribe('ScheduleService', () => {
+describe('ScheduleService', () => {
     let httpMock: HttpTestingController;
     let service: ScheduleService;
     let serviceTrm: TrmService;
     const apiEndpointSchedule = `${environment.endpoint}/schedule`;
-    const VALOR_HORA_DESCUENTO_QUINCE:number = 0.15;
-    const VALOR_HORA_DESCUENTO_CINCO:number = 0.05;
+    const VALOR_HORA_DESCUENTO_QUINCE = 0.15;
+    const VALOR_HORA_DESCUENTO_CINCO = 0.05;
 
     beforeEach(() => {
         const injector = TestBed.configureTestingModule({
@@ -77,8 +77,8 @@ fdescribe('ScheduleService', () => {
     });
 
     it('deberia de calcular el precio de la cita con descuento del 15%', () => {
-        let valorCitaMock: number = 0;
-        let trm: number = 0;
+        let valorCitaMock = 0;
+        let trm = 0;
         serviceTrm.obtnerTRM().then(data => {
             trm = parseFloat(data.valor);
         });
@@ -97,12 +97,11 @@ fdescribe('ScheduleService', () => {
 
         const valorCita = service.calcularPrecioCita(dummySchedule);
         expect(valorCita).toBe(Math.round(valorCitaMock));
-        
     });
 
     it('deberia de calcular el precio de la cita con descuento del 5%', () => {
-        let valorCitaMock: number = 0;
-        let trm: number = 0;
+        let valorCitaMock = 0;
+        let trm = 0;
         serviceTrm.obtnerTRM().then(data => {
             trm = parseFloat(data.valor);
         });
@@ -120,7 +119,7 @@ fdescribe('ScheduleService', () => {
         );
 
         const valorCita = service.calcularPrecioCita(dummySchedule);
-        expect(valorCita).toBe(Math.round(valorCitaMock)); 
+        expect(valorCita).toBe(Math.round(valorCitaMock));
     });
 
     it('Deberia de obtener el rango de disponibilidad', () => {
