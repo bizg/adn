@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core-service/http.service';
+import { TrmService } from '@core/services/trm.service';
 import { range } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Schedule } from '../model/schedule';
@@ -14,7 +15,10 @@ const VALOR_HORA_DESCUENTO_CINCO:number = 0.05;
 @Injectable()
 export class ScheduleService {
 
-    constructor(protected http: HttpService) { }
+    constructor(
+        protected http: HttpService,
+        private serviceTrm: TrmService
+    ) { }
 
     public get() {
         return this.http.doGet<Schedule[]>(`${environment.endpoint}/schedule`, this.http.optsName('Get schedule'));
@@ -48,7 +52,11 @@ export class ScheduleService {
     public calcularPrecioCita(form) {
         const horaInicio = form.startHour.split(':')[0];
         const tiempo = form.endHour.split(':')[0] - horaInicio;
-        let valor = (environment.valueSchedule * tiempo) * parseFloat(localStorage.getItem('trm'));
+        let trm:number = 0;
+        this.serviceTrm.obtnerTRM().then(data => {
+            trm = parseFloat(data.valor);
+        });
+        let valor = (environment.valueSchedule * tiempo) * trm;
         if (horaInicio < HORA_FIN_DESCUENTO_QUINCE_PORCIENTO) { valor = valor - (valor * VALOR_HORA_DESCUENTO_QUINCE); }
         if (horaInicio >= HORA_FIN_DESCUENTO_QUINCE_PORCIENTO && horaInicio <= HORA_FIN_DESCUENTO_CINCO_PORCIENTO) { 
             valor = valor - (valor * VALOR_HORA_DESCUENTO_CINCO); 

@@ -24,6 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MockLocationStrategy } from '@angular/common/testing';
 import { ScheduleMockService } from '@schedule/shared/data/schedule-mock.service';
+import { TrmService } from '@core/services/trm.service';
 
 describe('CreateScheduleComponent', () => {
     let component: CreateScheduleComponent;
@@ -59,7 +60,8 @@ describe('CreateScheduleComponent', () => {
               { provide: LocationStrategy, useClass: MockLocationStrategy },
               ScheduleService,
               HttpService,
-              AlertService
+              AlertService,
+              TrmService
             ],
         })
             .compileComponents();

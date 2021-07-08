@@ -75,8 +75,4 @@ export class ScheduleMockService {
         });
     }
 
-    deleteSchedule() {
-        return true;
-    }
-
 }
