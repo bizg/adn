@@ -24,6 +24,7 @@ import { ScheduleService } from '../../shared/service/schedule.service';
 import { HttpService } from '@core/services/http.service';
 import { of } from 'rxjs';
 import { TrmService } from '@core/services/trm.service';
+import { TrackByPipe } from '@shared/pipe/track-by.pipe';
 
 describe('EditScheduleComponent', () => {
     let component: EditScheduleComponent;
@@ -32,7 +33,7 @@ describe('EditScheduleComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [EditScheduleComponent],
+            declarations: [EditScheduleComponent, TrackByPipe],
             imports: [
                 CommonModule,
                 HttpClientModule,
@@ -74,7 +75,8 @@ describe('EditScheduleComponent', () => {
                 HttpService,
                 AlertService,
                 DatePipe,
-                TrmService
+                TrmService,
+                TrackByPipe
             ],
         })
             .compileComponents();

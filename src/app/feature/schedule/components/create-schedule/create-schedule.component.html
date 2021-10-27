@@ -5,13 +5,13 @@
 		<div class="items" fxFlex="50">
 			<mat-form-field appearance="outline">
 				<mat-label>Subject</mat-label>
-				<input matInput placeholder="Placeholder" formControlName="subject" id="createSubject">
+				<input matInput placeholder="Subject" formControlName="subject" id="createSubject">
 			</mat-form-field>
 		</div>
 		<div class="items" fxFlex="50">
 			<mat-form-field appearance="outline">
 				<mat-label>Name</mat-label>
-				<input matInput placeholder="Placeholder" formControlName="name" id="createName">
+				<input matInput placeholder="Name" formControlName="name" id="createName">
 			</mat-form-field>
 		</div>
 	</div>
@@ -19,7 +19,7 @@
 		<div class="items" fxFlex="50">
 			<mat-form-field appearance="outline">
 				<mat-label>Date</mat-label>
-				<input matInput [matDatepicker]="picker" placeholder="Placeholder" formControlName="date"
+				<input matInput [matDatepicker]="picker" placeholder="Date" formControlName="date"
 					id="createDate">
 				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 				<mat-datepicker #picker></mat-datepicker>
@@ -29,7 +29,7 @@
 			<mat-form-field appearance="outline">
 				<mat-label>Start hour</mat-label>
 				<mat-select formControlName="startHour" id="createStartHour">
-					<mat-option *ngFor="let item of horario" [value]="item"> {{ item }}
+					<mat-option *ngFor="let item of horario; trackBy: ( 'id' | trackBy)" [value]="item"> {{ item }}
 					</mat-option>
 				</mat-select>
 			</mat-form-field>
@@ -40,7 +40,7 @@
 			<mat-form-field appearance="outline">
 				<mat-label>End hour</mat-label>
 				<mat-select formControlName="endHour" id="createEndHour">
-					<mat-option *ngFor="let item of horario" [value]="item"> {{ item }}
+					<mat-option *ngFor="let item of horario; trackBy: ( 'id' | trackBy)" [value]="item"> {{ item }}
 					</mat-option>
 				</mat-select>
 			</mat-form-field>

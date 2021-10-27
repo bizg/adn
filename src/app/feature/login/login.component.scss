@@ -1,0 +1,46 @@
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+mat-card {
+    text-align: center;
+    width: 40%;
+}
+
+.mat-flat-button {
+    padding: 5px 50px;
+}
+
+.mat-card-title {
+    margin: 25px 0px !important;
+}
+
+.mat-form-field {
+    width: 80%;
+}
+
+.header {
+    width: 100%;
+    text-align: center;
+}
+
+.header img{
+    width: 10%;
+}
+
+@media screen and (max-width: 736px){
+
+    mat-card {
+        text-align: center;
+        border-radius: 0px;
+        width: 100%;
+    }
+    .header {
+        margin-top: 50px;
+    }
+    .header img{
+        width: 100px;
+    }
+}

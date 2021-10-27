@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 @Injectable()
 export class AlertService {
 
-    public AlertaExito(texto: string, titulo?: string) {
+    public mensajeExito(texto: string, titulo?: string) {
         return Swal.fire({
             icon: 'success',
             title: titulo || 'Exíto al realizar la operación',
@@ -13,7 +13,7 @@ export class AlertService {
         });
     }
 
-    public AlertaError(texto: string, titulo?: string) {
+    public mensajeError(texto: string, titulo?: string) {
         return Swal.fire({
             icon: 'error',
             title: titulo || 'Oops...',

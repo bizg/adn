@@ -1,13 +1,18 @@
 <div class="header" fxLayout="row">
-	<div class="buttons" fxFlex="100">
+	<div class="filter" fxFlex="50">
+		<mat-form-field appearance="outline">
+			<mat-label>Buscar...</mat-label>
+			<input type="text" matInput placeholder="Buscar..." id="buscador" [(ngModel)]="filterName">
+		</mat-form-field>
+	</div>
+	<div class="buttons" fxFlex="50">
 		<button mat-flat-button color="primary" (click)="openDialogCreate()" id="createSchedule">New</button>
 	</div>
 </div>
 
-
 <div class="">
 
-	<table mat-table [dataSource]="listSchedule" class="mat-elevation-z8" matSort id="listTableSchedule">
+	<table mat-table [dataSource]="listSchedule | filterData: filterName" class="mat-elevation-z8" matSort id="listTableSchedule">
 		<caption>List schedule</caption>
 		<!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
@@ -68,10 +73,10 @@
 		<ng-container matColumnDef="options">
 			<mat-header-cell *matHeaderCellDef mat-sort-header> Options </mat-header-cell>
 			<mat-cell *matCellDef="let element;let i = index;" data-label="options"> 
-				<a (click)="openDialogEdit(element)" id="edit-{{ i }}">
+				<a (click)="openDialogEdit(element)" id="edit-{{ i }}" class="links">
 					<mat-icon aria-hidden="false" aria-label="edit">edit</mat-icon>
 				</a>
-				<a (click)="doDelete(element)" id="delete-{{ i }}">
+				<a (click)="doDelete(element)" id="delete-{{ i }}" class="links">
 					<mat-icon aria-hidden="false" aria-label="delte">delete</mat-icon>
 				</a>
 			</mat-cell>

@@ -19,6 +19,9 @@
       "@schedule/*": [
         "src/app/feature/schedule/*"
       ],
+      "@login/*": [
+        "src/app/feature/login/*"
+      ],
       "@shared/*": [
         "src/app/shared/*"
       ]

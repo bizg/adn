@@ -32,11 +32,11 @@ export class CreateScheduleComponent implements OnInit {
         form.id = this.getId();
         form.value = this.scheduleService.calcularPrecioCita(form);
         if (this.scheduleService.validarDisponibilidadAgenda(form).length > 0) {
-            this.alertService.AlertaError('Ya hay citas agendas en la hora seleccionada');
+            this.alertService.mensajeError('Ya hay citas agendas en la hora seleccionada');
             return;
         }
         this.scheduleService.create(form).subscribe(() => {
-            this.alertService.AlertaExito('Se ha realizado la creación del agendamiento exitosamente');
+            this.alertService.mensajeExito('Se ha realizado la creación del agendamiento exitosamente');
             this.closeModal();
             return true;
         });

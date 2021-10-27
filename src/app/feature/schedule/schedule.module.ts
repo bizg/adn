@@ -18,13 +18,16 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { DatePipe } from '@angular/common';
 import { ScheduleMockService } from './shared/data/schedule-mock.service';
+import { TrackByPipe } from '@shared/pipe/track-by.pipe';
+import { FilterPipe } from '@schedule/shared/pipe/filter/filter.pipe';
 
 
 @NgModule({
   declarations: [
     ListScheduleComponent,
     CreateScheduleComponent,
-    EditScheduleComponent
+    EditScheduleComponent,
+    FilterPipe
   ],
   imports: [
     ScheduleRoutingModule,
@@ -41,6 +44,6 @@ import { ScheduleMockService } from './shared/data/schedule-mock.service';
     MatNativeDateModule,
     MatSelectModule,
   ],
-  providers: [ScheduleService, DatePipe, ScheduleMockService]
+  providers: [ScheduleService, DatePipe, TrackByPipe, FilterPipe, ScheduleMockService],
 })
 export class ScheduleModule { }

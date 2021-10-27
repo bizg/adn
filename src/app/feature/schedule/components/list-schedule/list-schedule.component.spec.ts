@@ -24,6 +24,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
 import { TrmService } from '@core/services/trm.service';
+import { FilterPipe } from '@schedule/shared/pipe/filter/filter.pipe';
+import { TrackByPipe } from '@shared/pipe/track-by.pipe';
 
 describe('ListScheduleComponent', () => {
     let component: ListScheduleComponent;
@@ -34,7 +36,7 @@ describe('ListScheduleComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [ListScheduleComponent],
+            declarations: [ListScheduleComponent, FilterPipe, TrackByPipe],
             imports: [
                 CommonModule,
                 HttpClientModule,
@@ -66,7 +68,9 @@ describe('ListScheduleComponent', () => {
                 AlertService,
                 DatePipe,
                 CurrencyPipe,
-                TrmService
+                TrmService,
+                FilterPipe,
+                TrackByPipe
             ]
         })
             .compileComponents();

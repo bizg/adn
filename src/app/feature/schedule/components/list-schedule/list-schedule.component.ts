@@ -12,6 +12,7 @@ import { AlertService } from '@shared/service/alert.service';
     styleUrls: ['./list-schedule.component.scss']
 })
 export class ListScheduleComponent implements OnInit {
+    public filterName: string;
     public listSchedule: Schedule[];
     public dataSource: Schedule[];
     public displayedColumns: string[] = ['id',
@@ -45,7 +46,7 @@ export class ListScheduleComponent implements OnInit {
     doDelete(schedule: Schedule) {
         this.scheduleService.delete(schedule).subscribe(() => {
             this.doGet();
-            this.alertService.AlertaExito('Se ha realizado la eliminación del agendamiento exitosamente');
+            this.alertService.mensajeExito('Se ha realizado la eliminación del agendamiento exitosamente');
             return true;
         });
         return true;

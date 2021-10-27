@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   endpoint: 'http://localhost:3000',
   valueSchedule: 50,
+  fakeEnpoint: 'https://reqres.in/api'
 };
 
 /*

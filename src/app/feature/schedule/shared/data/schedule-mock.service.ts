@@ -16,8 +16,8 @@ export class ScheduleMockService {
                         value: '371317'
                     },
                     {
-                        subject: 'mike',
-                        name: 'mike',
+                        subject: 'prueba 1',
+                        name: 'prueba 1',
                         date: '2021-07-01T05:00:00.000Z',
                         startHour: '15:00',
                         endHour: '16:00',
@@ -26,7 +26,7 @@ export class ScheduleMockService {
                     },
                     {
                         subject: 'fgdfgdfg',
-                        name: 'gsdfgdsfg',
+                        name: 'filtro',
                         date: '2021-06-29T05:00:00.000Z',
                         startHour: '8:00',
                         endHour: '9:00',

@@ -25,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MockLocationStrategy } from '@angular/common/testing';
 import { ScheduleMockService } from '@schedule/shared/data/schedule-mock.service';
 import { TrmService } from '@core/services/trm.service';
+import { TrackByPipe } from '@shared/pipe/track-by.pipe';
 
 describe('CreateScheduleComponent', () => {
     let component: CreateScheduleComponent;
@@ -33,7 +34,7 @@ describe('CreateScheduleComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [CreateScheduleComponent],
+            declarations: [CreateScheduleComponent, TrackByPipe],
             imports: [
                 CommonModule,
                 HttpClientModule,
@@ -61,7 +62,8 @@ describe('CreateScheduleComponent', () => {
               ScheduleService,
               HttpService,
               AlertService,
-              TrmService
+              TrmService,
+              TrackByPipe
             ],
         })
             .compileComponents();

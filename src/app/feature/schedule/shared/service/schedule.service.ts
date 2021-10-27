@@ -50,8 +50,9 @@ export class ScheduleService {
     }
 
     public calcularPrecioCita(form) {
-        const horaInicio = form.startHour.split(':')[0];
-        const tiempo = form.endHour.split(':')[0] - horaInicio;
+        const [ horaInicio ]  = form.startHour.split(':');
+        const [ horaFinal ] = form.endHour.split(':');
+        const tiempo = horaFinal - horaInicio;
         let trm = 0;
         this.serviceTrm.obtnerTRM().then(data => {
             trm = parseFloat(data.valor);

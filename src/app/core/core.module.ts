@@ -4,8 +4,6 @@ import { SecurityGuard } from './guard/security.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptor/token-interceptor';
 import { AuthInterceptor } from './interceptor/auth-interceptor';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpService } from './services/http.service';
 import { ManejadorError } from './interceptor/manejador-error';
 import { RouterModule } from '@angular/router';
@@ -18,13 +16,17 @@ import { MatDividerModule } from '@angular/material/divider';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatListModule } from '@angular/material/list';
 import { TrmService } from './services/trm.service';
+import { AdminLayoutModule } from './layouts/admin/admin.layout.module';
+import { AuthLayoutModule } from './layouts/auth/auth.layout.module';
 
 @NgModule({
-    declarations: [ToolbarComponent, NavbarComponent],
+    declarations: [],
     imports: [
         CommonModule,
         RouterModule,
         FlexLayoutModule,
+        AdminLayoutModule,
+        AuthLayoutModule,
         MatToolbarModule,
         MatIconModule,
         MatSidenavModule,
@@ -33,7 +35,6 @@ import { TrmService } from './services/trm.service';
         MatDividerModule,
         MatListModule
     ],
-    exports: [ToolbarComponent, NavbarComponent],
     providers: [
         HttpService,
         TrmService,

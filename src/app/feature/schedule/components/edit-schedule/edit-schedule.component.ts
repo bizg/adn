@@ -37,11 +37,11 @@ export class EditScheduleComponent implements OnInit {
         form.id = this.data.id;
         form.value = this.scheduleService.calcularPrecioCita(form);
         if (this.scheduleService.validarDisponibilidadAgenda(form).length > 0) {
-            this.alertService.AlertaError('Ya hay citas agendas en la hora seleccionada');
+            this.alertService.mensajeError('Ya hay citas agendas en la hora seleccionada');
             return false;
         }
         this.scheduleService.edit(form).subscribe(() => {
-            this.alertService.AlertaExito('Se ha realizado la actualización del agendamiento exitosamente');
+            this.alertService.mensajeExito('Se ha realizado la actualización del agendamiento exitosamente');
             this.closeModal();
             return true;
         });

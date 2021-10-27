@@ -13,7 +13,13 @@
       ],
       "@shared/*": [
         "src/app/shared/*"
-      ]
+      ],
+      "@schedule/*": [
+        "src/app/feature/schedule/*"
+      ],
+      "@login/*": [
+        "src/app/feature/login/*"
+      ],
     }
   },
   "files": [
